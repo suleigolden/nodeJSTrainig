@@ -4,13 +4,8 @@
   "description": "simple knowlegebase app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app"
   },
-  "keywords": [
-    "Suleiman",
-    "A.",
-    "Mamman"
-  ],
   "author": "\u001b[A\u001b[A\u001b[B\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[C\u001b[B\u001b[D\u001b[D\u001b[D Suleiman A Mamman\u001b[D",
   "license": "ISC"
 }
