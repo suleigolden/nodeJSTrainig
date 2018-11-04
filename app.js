@@ -17,7 +17,9 @@ app.set('view engine', 'html');
 
 //Home Route
 app.get('/', (req, res) =>{
-	res.render('hello');
+	 let name = 'Golden'; 
+	 let age = 33;
+	res.render('hello', {title: name, age: age});
 });
 // app.get('/',function(req,res){
 //   res.sendFile(path.join(__dirname+'/views/hello.html'));
