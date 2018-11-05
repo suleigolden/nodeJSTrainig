@@ -1,6 +1,7 @@
 const express = require("express");
 const path = require("path");
 const mongoose = require('mongoose');
+const bodyParser = require('body-parser');
 
 //Connect to Database
 mongoose.connect('mongodb://localhost/nodekb');
@@ -27,6 +28,15 @@ app.set('views', path.join(__dirname, 'views'));
 app.engine('html', require('ejs').renderFile);
 app.set('view engine', 'html');
 
+//body parser middleware
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }));
+// parse application/json
+app.use(bodyParser.json());
+
+//Set Public Folder
+app.use(express.static(path.join(__dirname,'public')));
+
 //Home Route
 app.get('/', (req, res) =>{
 	 // let name = 'Golden'; 
@@ -49,9 +59,20 @@ app.get('/addproduct', (req, res) =>{
 
 //Save new article Route
 app.post('/addproduct', (req, res) =>{
-	console.log('Submitted');
-	
-	return;
+  let article = new articleTable();
+  article.title = req.body.title;
+  article.author = req.body.author;
+  article.body = req.body.body;
+
+  article.save( (err)=>{
+    if (err) {
+      console.log(err);
+      return;
+    }else {
+      res.redirect('/');
+    }
+  });
+
 });
 
 
