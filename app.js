@@ -21,6 +21,32 @@ app.get('/', (req, res) =>{
 	 let age = 33;
 	res.render('hello', {title: name, age: age});
 });
+//Home Route
+app.get('/addproduct', (req, res) =>{
+	 let name = 'Golden'; 
+	 let age = 33;
+	 let articles = [
+	 	{
+	 	  id:1,
+	 	  title:'Article Two',
+	 	  author:'Brand Traversy',
+	 	  body:'This is article one'
+	 	},
+	 	{
+	 	  id:2,
+	 	  title:'Article One',
+	 	  author:'James Doe',
+	 	  body:'This is article two'
+	 	},
+	 	{
+	 	  id:3,
+	 	  title:'Article Three',
+	 	  author:'Don Mikel',
+	 	  body:'This is article Three'
+	 	}
+	 ];
+	res.render('saveproduct', {title: name, articles: articles});
+});
 // app.get('/',function(req,res){
 //   res.sendFile(path.join(__dirname+'/views/hello.html'));
 //   //__dirname : It will resolve to your project folder.
