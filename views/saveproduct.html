@@ -20,22 +20,12 @@
     <div class="jumbotron"  style="padding:40px;">
       <h1>Save New Product</h1>
       
-    <table border="3">
-     <tr>
-     <td>ID</td>
-     <td>Title</td>
-     <td>Author</td>
-     <td>Body</td>
-   </tr>
-<% for(var i=0; i < articles.length; i++) { %>
-   <tr>
-     <td><%= articles[i].id %></td>
-     <td><%= articles[i].title %></td>
-     <td><%= articles[i].author %></td>
-     <td><%= articles[i].body %></td>
-   </tr>
-<% } %>
-</table>
+        <form method="POST" action="/addproduct">
+          <input type="text" name="title"><br><br>
+          <input type="text" name="author"><br><br>
+          <textarea name="body"></textarea><br><br>
+          <button type="submit">Save</button>
+        </form>
     </div>
   </div>
 </body>

@@ -20,7 +20,7 @@ db.on('error', (err) =>{
 const app = express();
 
 //Bring in Models
-let Article_Table = require('./models/article');
+let articleTable = require('./models/article');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,35 +29,29 @@ app.set('view engine', 'html');
 
 //Home Route
 app.get('/', (req, res) =>{
-	 let name = 'Golden'; 
-	 let age = 33;
-	res.render('hello', {title: name, age: age});
+	 // let name = 'Golden'; 
+	 // let age = 33;
+	 articleTable.find({}, (err, articles) =>{
+
+		if(err){
+			console.log(err);
+		}else{
+			res.render('hello', {articles: articles});
+		}
+	});
+
 });
 //Home Route
 app.get('/addproduct', (req, res) =>{
-	 let name = 'Golden'; 
-	 let age = 33;
-	 let articles = [
-	 	{
-	 	  id:1,
-	 	  title:'Article Two',
-	 	  author:'Brand Traversy',
-	 	  body:'This is article one'
-	 	},
-	 	{
-	 	  id:2,
-	 	  title:'Article One',
-	 	  author:'James Doe',
-	 	  body:'This is article two'
-	 	},
-	 	{
-	 	  id:3,
-	 	  title:'Article Three',
-	 	  author:'Don Mikel',
-	 	  body:'This is article Three'
-	 	}
-	 ];
-	res.render('saveproduct', {title: name, articles: articles});
+	res.render('saveproduct');
+	
+});
+
+//Save new article Route
+app.post('/addproduct', (req, res) =>{
+	console.log('Submitted');
+	
+	return;
 });
 
 
