@@ -1,0 +1,32 @@
+<html>
+<head>
+   <%include header.html%>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+    <a class="navbar-brand" href="/">Express HTML</a>
+    <ul class="nav navbar-nav">
+      <li class="active">
+        <a href="/">Home</a>
+      </li>
+      <li>
+        <a href="/addproduct">Save product</a>
+      </li>
+    </ul>
+  </div>
+</nav>
+    <div class="jumbotron"  style="padding:40px;">
+      <h1>Edit Article</h1>
+      
+        <form method="POST" action="/article/edit/<%= article._id %>">
+          <input type="text" name="title" value="<%= article.title %>"><br><br>
+          <input type="text" name="author" value="<%= article.author %>"><br><br>
+          <textarea name="body"><%= article.body %></textarea><br><br>
+          <button type="submit">Save</button>
+        </form>
+    </div>
+  </div>
+</body>
+</html>

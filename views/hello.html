@@ -26,13 +26,15 @@
      <td>Title</td>
      <td>Author</td>
      <td>Body</td>
+     <td>link</td>
    </tr>
 <% for(var i=0; i < articles.length; i++) { %>
    <tr>
-     <td><%= articles[i].id %></td>
+     <td><%= articles[i]._id %></td>
      <td><%= articles[i].title %></td>
      <td><%= articles[i].author %></td>
      <td><%= articles[i].body %></td>
+     <td><a class="btn btn-primary" href="/fullview/<%= articles[i]._id %>">Full View</a></td>
    </tr>
 <% } %>
 </table>
