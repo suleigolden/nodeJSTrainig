@@ -1,14 +1,26 @@
 const express = require("express");
 const path = require("path");
+const mongoose = require('mongoose');
 
-//const cons = require('consolidate');
+//Connect to Database
+mongoose.connect('mongodb://localhost/nodekb');
+let db = mongoose.connection;
+
+//Check Connection
+db.once('open', ()=>{
+  console.log('Connected to MongoDB');
+});
+
+//Check for DB errors
+db.on('error', (err) =>{
+  console.log(err);
+});
+
 // Init App
 const app = express();
 
-//Load View Engine
-// app.set('views', path.join(__dirname, 'views'));
-// app.set('view engine', 'pug');
-
+//Bring in Models
+let Article_Table = require('./models/article');
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -47,10 +59,6 @@ app.get('/addproduct', (req, res) =>{
 	 ];
 	res.render('saveproduct', {title: name, articles: articles});
 });
-// app.get('/',function(req,res){
-//   res.sendFile(path.join(__dirname+'/views/hello.html'));
-//   //__dirname : It will resolve to your project folder.
-// });
 
 
 
