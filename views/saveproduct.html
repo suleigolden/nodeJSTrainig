@@ -19,7 +19,13 @@
 </nav>
     <div class="jumbotron"  style="padding:40px;">
       <h1>Save New Product</h1>
-      
+      <% if(errors){ %>
+
+          <% for(var i=0; i < errors.length; i++) { %>
+          <div class="alert alert-danger"><%= errors[i].msg %></div>
+          <% } %>
+
+       <% } %>
         <form method="POST" action="/addproduct">
           <input type="text" name="title"><br><br>
           <input type="text" name="author"><br><br>
