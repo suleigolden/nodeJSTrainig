@@ -1,1 +1,37 @@
-<h1>Hello users</h1>
+<html>
+<head>
+   <%include header.html%>
+</head>
+<body>
+  <div style="margin:100px;">
+    <nav class="navbar navbar-inverse navbar-static-top">
+  <div class="container">
+     <%include menu.html%>
+  </div>
+</nav>
+    <div class="col-md-5"  style="padding:40px;">
+      <h1>Register</h1>
+      <% if(errors){ %>
+
+          <% for(var i=0; i < errors.length; i++) { %>
+          <div class="alert alert-danger"><%= errors[i].msg %></div>
+          <% } %>
+
+       <% } %>
+        <form method="POST" action="/users/register">
+          <label>Name</label>
+          <input type="text" name="name" class="form-control" placeholder="Name">
+          <label>Email</label>
+          <input type="email" name="email" class="form-control" placeholder="Email">
+          <label>User Name</label>
+          <input type="text" name="username" class="form-control" placeholder="User Name">
+          <label>Password</label>
+          <input type="password" name="password" class="form-control" placeholder="Password">
+          <label>Confirm Password</label>
+          <input type="password" name="confirmpassword" class="form-control" placeholder="Password">
+          <button type="submit" class="btn btn-primary">Register</button>
+        </form>
+    </div>
+  </div>
+</body>
+</html>

@@ -7,8 +7,9 @@ const passport = require('passport');
 let User = require('../models/user');
 
 // Register Form
-router.get('/register', function(req, res){
-  res.render('register');
+router.get('/register', (req, res)=>{
+  let errors = {};
+  res.render('register', {errors:errors});
 });
 
 module.exports = router;
