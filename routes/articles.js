@@ -14,7 +14,7 @@ router.get('/addproduct', ensureAuthenticated, (req, res) =>{
 });
 
 //Save new article Route
-router.post('/addproduct', (req, res) =>{
+router.post('/addproduct', ensureAuthenticated, (req, res) =>{
   req.checkBody('title','Title is required').notEmpty();
   //req.checkBody('author','Author is required').notEmpty();
   req.checkBody('body','Body is required').notEmpty();
@@ -80,7 +80,7 @@ function ensureAuthenticated(req, res, next){
 }
 
 //Edit article Route
-router.get('/edit/article/:id', (req, res) =>{
+router.get('/edit/article/:id', ensureAuthenticated, (req, res) =>{
 	
  	articleTable.findById(req.params.id, (err, article) =>{
  		if (err) {
@@ -94,7 +94,7 @@ router.get('/edit/article/:id', (req, res) =>{
 	
 });
 //Update article Route
-router.post('/edit/:id', (req, res) =>{
+router.post('/edit/:id', ensureAuthenticated, (req, res) =>{
   let article = {};
   article.title = req.body.title;
   article.author = req.body.author;
@@ -115,7 +115,7 @@ router.post('/edit/:id', (req, res) =>{
 });
 
 //Delete Article
-router.delete('/:id', (req, res) =>{
+router.delete('/:id', ensureAuthenticated, (req, res) =>{
 	let query = {_id:req.params.id}
 
 	articleTable.remove(query, (err)=>{
