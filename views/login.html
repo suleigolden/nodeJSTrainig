@@ -11,13 +11,7 @@
 </nav>
     <div class="col-md-5"  style="padding:40px;">
       <h1>Register</h1>
-      <% if(errors){ %>
-
-          <% for(var i=0; i < errors.length; i++) { %>
-          <div class="alert alert-danger"><%= errors[i].msg %></div>
-          <% } %>
-
-       <% } %>
+      <%- messages('my_message_template', locals) %>
         <form method="POST" action="/users/login">
           <label>User Name</label>
           <input type="text" name="username" class="form-control" placeholder="User Name">

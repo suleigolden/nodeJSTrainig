@@ -59,8 +59,17 @@ router.post('/register', function(req, res){
 });
 
 // Login Form Route
-router.get('/login', function(req, res){
+router.get('/login', (req, res)=>{
   res.render('login');
 });
+// Login Process
+router.post('/login', (req, res, next)=>{
+  passport.authenticate('local', {
+    successRedirect:'/',
+    failureRedirect:'/users/login',
+    failureFlash: true
+  })(req, res, next);
+});
+
 
 module.exports = router;
