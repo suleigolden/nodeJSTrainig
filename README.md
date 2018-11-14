@@ -1,25 +1,24 @@
-# Article NodeJS Application
+# Training NodeJS Web Application
 
-The purpose is to calculate the time and cost saving potential per month for a potential customer.
+This training shows how to Save, Update and Delete record. And also user authentication and access control plus API 
 
 ## Technologies
 * Node.js
 * Express
 * Express Messages, Session, Connect Flash & Validation
-* MongoDB & Mongoose
-* Pug Templating
-* Passport.js Authentication
-* BCrypt Hashing
-* EJS
 * HTML
 * CSS
 * Bootstrap
+* MongoDB & Mongoose
+* Passport.js Authentication
+* BCrypt Hashing
+* EJS
+
 
 ### Installation
 
 * Install the Dependencies
-* Create mongodb database with the name meinrecycling and create a collection name recyclings
-* Import recyclings.json file to the database that you reated (optional).
+* Create mongodb database with the name nodekb or you can call it anything of your choice, but you have to change the name in this directory (config/database.js) file on line 2
 
 
 ```sh
