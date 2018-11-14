@@ -5,10 +5,16 @@
       <li>
         <a href="/articles/addproduct">Save Article</a>
       </li>
+      <% if(user){ %>
+       <li>
+        <a href="/users/logout">Log Out</a>
+      </li>
+       <% }else{ %>
       <li>
         <a href="/users/register">Register</a>
       </li>
       <li>
         <a href="/users/login">Log In</a>
       </li>
+      <% } %>
     </ul>
