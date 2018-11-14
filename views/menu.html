@@ -2,10 +2,10 @@
       <li class="active">
         <a href="/">Home</a>
       </li>
+      <% if(user){ %>
       <li>
         <a href="/articles/addproduct">Save Article</a>
       </li>
-      <% if(user){ %>
        <li>
         <a href="/users/logout">Log Out</a>
       </li>
