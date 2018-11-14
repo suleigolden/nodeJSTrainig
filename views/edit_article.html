@@ -6,25 +6,27 @@
   <div style="margin:100px;">
     <nav class="navbar navbar-inverse navbar-static-top">
   <div class="container">
-    <a class="navbar-brand" href="/">Express HTML</a>
     <ul class="nav navbar-nav">
       <li class="active">
         <a href="/">Home</a>
       </li>
       <li>
-        <a href="/articles/addproduct">Save product</a>
+        <a href="/articles/addproduct">Save Article</a>
       </li>
     </ul>
   </div>
 </nav>
-    <div class="jumbotron"  style="padding:40px;">
+    <div class="col-md-5"  style="padding:40px;">
       <h1>Edit Article</h1>
       
         <form method="POST" action="/articles/edit/<%= article._id %>">
-          <input type="text" name="title" value="<%= article.title %>"><br><br>
-          <input type="text" name="author" value="<%= article.author %>"><br><br>
-          <textarea name="body"><%= article.body %></textarea><br><br>
-          <button type="submit">Save</button>
+          <label>Title</label>
+          <input type="text" name="title" class="form-control" placeholder="Title" value="<%= article.title %>">
+          <label>Author</label>
+          <input type="text" name="author" class="form-control" placeholder="Author" value="<%= article.author %>">
+          <label>Body</label>
+          <textarea name="body" class="form-control" placeholder="Body"><%= article.body %></textarea><br><br>
+          <button type="submit" class="btn btn-primary">Save</button>
         </form>
     </div>
   </div>

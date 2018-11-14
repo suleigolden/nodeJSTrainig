@@ -1,6 +1,6 @@
-# Students Record Application
+# Article NodeJS Application
 
-This is a simple app developed with "Node.js & Express From Scratch" 
+The purpose is to calculate the time and cost saving potential per month for a potential customer.
 
 ## Technologies
 * Node.js
@@ -17,7 +17,10 @@ This is a simple app developed with "Node.js & Express From Scratch"
 
 ### Installation
 
-Install the dependencies
+* Install the Dependencies
+* Create mongodb database with the name meinrecycling and create a collection name recyclings
+* Import recyclings.json file to the database that you reated (optional).
+
 
 ```sh
 $ npm install
@@ -27,3 +30,4 @@ Run app
 ```sh
 $ npm start
 ```
+
