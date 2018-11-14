@@ -29,7 +29,7 @@ router.post('/register', function(req, res){
   let errors = req.validationErrors();
 
   if(errors){
-    res.render('register',{errors:errors});
+    res.render('register',{errors:errors, user:errors });
   } else {
     let newUser = new User({
       name:name,
@@ -71,7 +71,7 @@ router.post('/login', (req, res, next)=>{
   })(req, res, next);
 });
 
-// logout route
+// logout Route
 router.get('/logout', function(req, res){
   req.logout();
   req.flash('success', 'You are logged out');

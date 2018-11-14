@@ -83,12 +83,17 @@ function ensureAuthenticated(req, res, next){
 router.get('/edit/article/:id', ensureAuthenticated, (req, res) =>{
 	
  	articleTable.findById(req.params.id, (err, article) =>{
- 		if (err) {
-	      console.log(err);
-	      return;
-	    }else {
-	     res.render('edit_article', {article:article});
-	    }
+ 		if(article.author != req.user._id){
+	      req.flash('danger', 'Not Authorized');
+	      res.redirect('/');
+	    }else{
+	 		if (err) {
+		      console.log(err);
+		      return;
+		    }else {
+		     res.render('edit_article', {article:article});
+		    }
+		}
  		
  	}); 
 	
@@ -115,18 +120,38 @@ router.post('/edit/:id', ensureAuthenticated, (req, res) =>{
 });
 
 //Delete Article
-router.delete('/:id', ensureAuthenticated, (req, res) =>{
-	let query = {_id:req.params.id}
+// router.delete('/:id', ensureAuthenticated, (req, res) =>{
+// 	let query = {_id:req.params.id}
 
-	articleTable.remove(query, (err)=>{
-    if (err) {
-      console.log(err);
-      return;
-    }
-      res.send('success');
+// 	articleTable.remove(query, (err)=>{
+//     if (err) {
+//       console.log(err);
+//       return;
+//     }
+//       res.send('success');
     
-  });
+//   });
 
+// });
+router.delete('/:id', (req, res)=>{
+  if(!req.user._id){
+    res.status(500).send();
+  }
+
+  let query = {_id:req.params.id}
+
+  articleTable.findById(req.params.id, function(err, article){
+    if(article.author != req.user._id){
+      res.status(500).send();
+    } else {
+      articleTable.remove(query, function(err){
+        if(err){
+          console.log(err);
+        }
+        res.send('Success');
+      });
+    }
+  });
 });
 
 module.exports = router;

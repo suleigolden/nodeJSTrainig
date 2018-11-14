@@ -13,10 +13,14 @@
       <h1>Title: <%= article.title %></h1>
 
       <p>Commented by <%= author %></p>
-      
-        <a class="btn btn-primary" href="/articles/edit/article/<%= article._id %>">Edit Article</a>
-        <br>
-    <a class="btn btn-danger delete-aticle" href="#" data-id="<%= article._id %>">Delete Article</a>
+       <% if(user){ %>
+        <% if(user.id == article.author){ %>
+          <a class="btn btn-primary" href="/articles/edit/article/<%= article._id %>">Edit Article</a>
+            <br>
+        <a class="btn btn-danger delete-aticle" href="#" data-id="<%= article._id %>">Delete Article</a>
+        <% }%>
+       <% }%>
+       
     </div>
   </div>
 </body>
